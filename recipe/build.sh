@@ -21,8 +21,10 @@ MAVEN_OPTS=-Xmx4096m ./mvnw clean install --no-transfer-progress -DskipTests -Dm
 # so this might be redundant.
 ./mvnw org.codehaus.mojo:license-maven-plugin:aggregate-add-third-party -Dmaven.repo.local=$SRC_DIR/m2
 
-# Copy to $PREFIX/opt/trino-server/.
-cp -r core/trino-server/target/trino-server-*-hardlinks $PREFIX/opt/trino-server
+# Move to $PREFIX/opt/trino-server/.
+mv core/trino-server/target/trino-server-*-hardlinks $PREFIX/opt/trino-server
+ls -l $PREFIX/opt/
+ls -l $PREFIX/opt/trino-server
 
 # Deduplicate .jar files to reduce the package size.
 # Without deduplication the package is > 2 GiB and we get "File size unexpectedly exceeded ZIP64 limit".
