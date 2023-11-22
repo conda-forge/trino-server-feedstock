@@ -41,7 +41,7 @@ set +x
 while IFS= read -r -d '' file; do
   md5ed_path=$PREFIX/opt/trino-server/jars/$($md5prog "$file" | cut -d " " -f 1).jar
   echo "Symlinking $file to $md5ed_path"
-  if [ -e $md5ed_path]; then
+  if [ -e $md5ed_path ]; then
     rm "$file"
   else
     mv "$file" $md5ed_path
