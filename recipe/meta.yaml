@@ -1,5 +1,5 @@
 {% set name = "trino-server" %}
-{% set version = "433" %}
+{% set version = "434" %}
 
 package:
   name: {{ name|lower }}
